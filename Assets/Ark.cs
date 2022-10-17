@@ -12,6 +12,12 @@ public class Ark : MonoBehaviour
 	public AudioSource Source;
 	public AudioClip Clip;
 
+	public GameObject[] Stages;
+	public Action<float> OnRecycle;
+	public AudioSource Source;
+	public AudioClip Clip;
+
+
 	public ParticleSystem PS;
 
 	private float _perStage;
@@ -37,20 +43,7 @@ public class Ark : MonoBehaviour
         trunk.IsLoaded = true;
     }
 
-	private void OnTriggerEnter(Collider other)
-	{
 
-		var player = other.gameObject.GetComponent<PlayerController>();
-
-		var treetrunk = other.gameObject.GetComponent<TreeTrunk>();
-		if (treetrunk != null)
-		{
-			treetrunk.RecyclingStarted += RecyclingStarted;
-			treetrunk.Recycle(this);
-			
-			
-		}
-	}
 
 	private void RecyclingStarted(TreeTrunk obj, float ln)
 	{
